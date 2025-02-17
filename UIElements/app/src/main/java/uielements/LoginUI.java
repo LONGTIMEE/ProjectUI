@@ -37,6 +37,14 @@ public class LoginUI extends Application {
         loginButton.setOnAction(e -> new BookingUI(primaryStage));
        creatAccountsButton.setOnAction(e -> new CreatAcountsUI(primaryStage));
 
+
+    //     loginButton.setOnAction(e -> {
+    //     User user = Database.authenticate(usernameField.getText(), passwordField.getText());
+    //     if (user != null) new DashboardUI(primaryStage, user);
+    //     else messageLabel.setText("Invalid credentials.");
+    // });
+        
+
        
 
         //เพิ่มทุกอยุ่างลง VBox Container
