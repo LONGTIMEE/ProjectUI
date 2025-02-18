@@ -38,11 +38,7 @@ public class LoginUI extends Application {
        creatAccountsButton.setOnAction(e -> new CreatAcountsUI(primaryStage));
 
 
-    //     loginButton.setOnAction(e -> {
-    //     User user = Database.authenticate(usernameField.getText(), passwordField.getText());
-    //     if (user != null) new DashboardUI(primaryStage, user);
-    //     else messageLabel.setText("Invalid credentials.");
-    // });
+   
         
 
        
