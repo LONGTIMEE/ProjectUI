@@ -11,8 +11,9 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
-public class LoginUI l
+public class LoginUI {
 
+    public LoginUI(Stage primaryStage){
         // สร้าง Container ไว้ใส่ UI 
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20;");
@@ -50,8 +51,4 @@ public class LoginUI l
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
-
