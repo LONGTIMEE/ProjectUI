@@ -11,9 +11,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
-public class LoginUI extends Application {
-    @Override
-    public void start(Stage primaryStage) {
+public class LoginUI l
 
         // สร้าง Container ไว้ใส่ UI 
         VBox root = new VBox(10);
