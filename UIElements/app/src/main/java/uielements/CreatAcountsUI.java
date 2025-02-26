@@ -22,8 +22,19 @@ public class CreatAcountsUI {
         Label label3 = new Label("PassWord");
         TextField passwordField = new TextField("");
         Button creatAccountsButton = new Button("ปุ่ม (Button): สร้างรหัส");     
+        Label messagecreatLabel = new Label();
 
-        creatAccountsButton.setOnAction(e -> new BookingUI(primaryStage));    
+        usernamecreatField.setId("usernamecreatField");
+        passwordcreatField.setId("passwordcreatField");
+        creatAccountsButton.setId("creatAccountsButton");
+        messagecreatLabel.setId("messagecreatLabel");
+
+
+        creatAccountsButton.setOnAction(e -> {
+                        if (Database.registerUser(usernamecreatField.getText(), passwordcreatField.getText()))
+                            new LoginUI(primaryStage);
+                        else messagecreatLabel.setText("Username already taken.");
+                    });  
 
         root.getChildren().addAll(label1,label2 , usernameField, label3, passwordField,creatAccountsButton);
 
