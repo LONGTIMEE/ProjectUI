@@ -33,10 +33,14 @@ public class LoginUI {
 
 
         // ตั้ง Action เมื่อผู้ใช้ทำ...กับ UI เช่นคลิกปุ่ม
-        loginButton.setOnAction(e -> new BookingUI(primaryStage));
+        
        creatAccountsButton.setOnAction(e -> new CreatAcountsUI(primaryStage));
 
-
+        loginButton.setOnAction(e -> {
+        User user = Database.authenticate(usernameField.getText(), passwordField.getText());
+        if (user != null) new BookingUI(primaryStage);
+        else messageLabel.setText("Invalid credentials.");
+    });
    
         
 
