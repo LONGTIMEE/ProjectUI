@@ -17,10 +17,7 @@ public class roundUI{
         root.setStyle("-fx-padding: 20; -fx-background-color:rgb(216, 135, 135);");
 
         Label label = new Label("จุดรับ-คืนรถ");
-        label.setStyle("-fx-font-size: 25px; -fx-text-fill: #333;");
-        ComboBox<String> comboBox = new ComboBox<>();
-        comboBox.getItems().addAll("สนามบินสุวรรณภูมิ", "สนามบินดอนเมือง", "เซ็นทรัล พระราม3");
-        comboBox.setPromptText("เมนูเลือกแบบดรอปดาวน์ (ComboBox)");
+        TextField planetakecarField = new TextField("");
         Label nameLabel = new Label("วัน-เวลารับรถ");
         TextField takecarField = new TextField("19/02/2025 10:00น");
         Label password = new Label("วัน-เวลาคืนรถ");
