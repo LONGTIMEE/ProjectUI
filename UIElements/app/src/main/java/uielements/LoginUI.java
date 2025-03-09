@@ -13,6 +13,21 @@ import javafx.stage.Stage;
 
 public class LoginUI {
 
+
+/**
+ * loginLabel เป็นการเเสดงข้อความเขียนว่า  กรุณาล็อคอิน
+ * nameLabel เป็นการเเสดงข้อความเขียนว่า UserName
+ * usernameField เป็นการใส่ข้อความที่ต้องการสร้าง UserName
+ * passwordLabel เป็นการเเสดงข้อความเขียนว่า PassWord
+ * passwordField เป็นการใส่ข้อความที่ต้องการสร้าง PassWord
+ * loginButton เป็นปุ่มสำหรับใช้งาน ในการล็อคอิน
+ * creatAccountsButton เป็นปุ่มสำหรับใช้งาน ในการสร้างรหัส
+ * 
+ */
+
+
+
+
     public LoginUI(Stage primaryStage){
         // สร้าง Container ไว้ใส่ UI 
         VBox root = new VBox(10);
@@ -36,6 +51,10 @@ public class LoginUI {
         
        creatAccountsButton.setOnAction(e -> new CreatAcountsUI(primaryStage));
 
+
+        /**
+         * เมธอด ตรวจสอบว่ามี User ตรงกับข้อมูลที่กรอกไหม
+         */
         loginButton.setOnAction(e -> {
         User user = Database.authenticate(usernameField.getText(), passwordField.getText());
         if (user != null) new BookingUI(primaryStage);
@@ -46,9 +65,15 @@ public class LoginUI {
 
        
 
-        //เพิ่มทุกอยุ่างลง VBox Container
+        /**
+         * เพิ่มทุกอยุ่างลง VBox Container เพื่อจัดวางลง
+         */
         root.getChildren().addAll(loginLabel,nameLabel,usernameField,passwordLabel,passwordField,loginButton,creatAccountsButton,  messageLabel);
-        //ตั้งขนาดหน้าจอและ Show VBox
+        
+
+        /**
+         * ตั้งขนาดหน้าจอและ Show VBox
+         */
         Scene scene = new Scene(root, 400, 600);
         primaryStage.setTitle("JavaFX UI Components");
         primaryStage.setScene(scene);
