@@ -12,6 +12,16 @@ import javafx.stage.Stage;
 
 public class CreatAcountsUI {
     
+    /**
+ * label1 เป็นการเเสดงข้อความเขียนว่า  กรุณาสร้างรหัส
+ * label2 เป็นการเเสดงข้อความเขียนว่า UserName
+ * usernameField เป็นการใส่ข้อความที่ต้องการสร้าง UserName
+ * passwordLabel เป็นการเเสดงข้อความเขียนว่า PassWord
+ * passwordField เป็นการใส่ข้อความที่ต้องการสร้าง PassWord
+ * creatAccountsButton เป็นปุ่มสำหรับใช้งาน ในการสร้างรหัส
+ * 
+ */
+
         public CreatAcountsUI(Stage primaryStage){
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20; -fx-background-color:rgb(248, 248, 248);");
@@ -30,14 +40,26 @@ public class CreatAcountsUI {
         messagecreatLabel.setId("messagecreatLabel");
 
 
+
+        /**
+         * เมธอด ดึงข้อมูลที่กรอก เพื่อลงทะเบียนผู้ใช้ใหม่
+         */
         creatAccountsButton.setOnAction(e -> {
                         if (Database.registerUser(usernamecreatField.getText(), passwordcreatField.getText()))
                             new LoginUI(primaryStage);
                         else messagecreatLabel.setText("Username already taken.");
                     });  
 
+
+        /**
+         * เพิ่มทุกอยุ่างลง VBox Container เพื่อจัดวางลง
+         */
         root.getChildren().addAll(label1,label2 , usernameField, label3, passwordField,creatAccountsButton);
 
+
+        /**
+         * ตั้งขนาดหน้าจอและ Show VBox
+         */
         Stage secondStage = new Stage();
                 Scene scene = new Scene(root, 400, 600);
                 secondStage.setTitle("UI บวก CSS");
