@@ -40,6 +40,9 @@ public class TypeofCar{
         car2.setId("car2");
         car3.setId("car3");
 
+        /**
+         * ทั้งสามปุ่มเป็นปุ่มสำหรับการจองรถ ที่จะไปหน้าการเลือกรอบเวลาเเละสถานที่
+         */
         car1.setOnAction(e -> new roundUI(primaryStage));
         car2.setOnAction(e -> new roundUI(primaryStage));
         car3.setOnAction(e -> new roundUI(primaryStage));
