@@ -12,6 +12,13 @@ import javafx.util.Duration;
 
 public class paymentUI{
 
+/**
+ * label เป็นการเเสดงข้อความเขียนว่า  กรุณาชำระเงิน
+ * label1 เป็นการเเสดงข้อความเขียนว่า จำนวนเงินที่ต้องชำระ
+ * priceField เป็นการใส่ข้อความเขียนว่า 1600
+ * paybutton เป็นปุ่มสำหรับใช้งาน ชำระเงิน
+ * 
+ */
     public paymentUI(Stage primaryStage){
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20; -fx-background-color:rgb(216, 135, 135);");
