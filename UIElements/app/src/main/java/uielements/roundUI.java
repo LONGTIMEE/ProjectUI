@@ -12,6 +12,18 @@ import javafx.util.Duration;
 
 public class roundUI{
 
+
+
+
+/**
+ * label เป็นการเเสดงข้อความเขียนว่า  จุดรับ-คืนรถ
+ * nameLabel เป็นการเเสดงข้อความเขียนว่า วัน-เวลารับรถ
+ * takecarField เป็นการกรอกข้อความ วันที่ต้องการเเละเวลารับรถ
+ * password เป็นการเเสดงข้อความเขียนว่า วัน-เวลาคืนรถ
+ * sentcarField เป็นการกรอกข้อความ วันที่ต้องการเเละเวลาคืนรถ
+ * button เป็นปุ่มสำหรับใช้งาน ในการเช่า เพื่อที่จะไปจ่ายเงิน
+ * 
+ */
     public roundUI(Stage primaryStage){
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20; -fx-background-color:rgb(216, 135, 135);");
@@ -29,12 +41,22 @@ public class roundUI{
 
 
 
-
+        /**
+         * เป็นปุ่มเช่ารถ ที่จะไปหน้าการจ่ายเงิน
+         */
         button.setOnAction(e -> new paymentUI(primaryStage));
        
+
+        /**
+         * เพิ่มทุกอยุ่างลง VBox Container เพื่อจัดวางลง
+         */
+
         root.getChildren().addAll(label, comboBox, nameLabel, takecarField, password, sentcarField, button);
 
-        //สร้างหน้า (stage) ใหม่ โดยห่างจากหน้าแรก (+100,+50) ตาม x,y
+
+        /**
+         * ตั้งขนาดหน้าจอและ Show VBox
+         */
         Stage secondStage = new Stage();
         Scene scene = new Scene(root, 400, 600);
         secondStage.setTitle("UI บวก CSS");
