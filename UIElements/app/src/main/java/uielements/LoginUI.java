@@ -47,13 +47,15 @@ public class LoginUI {
         Button creatAccountsButton = new Button("ปุ่ม (Button): สร้างรหัส");
 
 
-        // ตั้ง Action เมื่อผู้ใช้ทำ...กับ UI เช่นคลิกปุ่ม
-        
+    
+        /**
+         * เป็นปุ่ม เพื่อไปยังหน้าสร้างรหัส
+         */
        creatAccountsButton.setOnAction(e -> new CreatAcountsUI(primaryStage));
 
 
         /**
-         * เมธอด ตรวจสอบว่ามี User ตรงกับข้อมูลที่กรอกไหม
+         * เป็นปุ่มเเละมีเมธอด เพื่อตรวจสอบว่ามี User ตรงกับข้อมูลที่กรอกไหม
          */
         loginButton.setOnAction(e -> {
         User user = Database.authenticate(usernameField.getText(), passwordField.getText());

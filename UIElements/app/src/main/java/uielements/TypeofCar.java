@@ -12,6 +12,17 @@ import javafx.stage.Stage;
 
 public class TypeofCar{
 
+
+
+/**
+ * label1 เป็นการเเสดงข้อความเขียนว่า  รถที่พร้อมให้จอง
+ * 
+ * car1 เป็นปุ่มสำหรับใช้งาน ในการจองรถ
+ * car2 เป็นปุ่มสำหรับใช้งาน ในการจองรถ
+ * car3 เป็นปุ่มสำหรับใช้งาน ในการจองรถ
+ * creatAccountsButton เป็นปุ่มสำหรับใช้งาน ในการสร้างรหัส
+ * 
+ */
     public TypeofCar(Stage primaryStage){
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20; -fx-background-color:rgb(248, 248, 248);");
@@ -34,9 +45,15 @@ public class TypeofCar{
         car3.setOnAction(e -> new roundUI(primaryStage));
 
 
+        /**
+         * เพิ่มทุกอยุ่างลง VBox Container เพื่อจัดวางลง
+         */
         root.getChildren().addAll(label1, car1 , car2, car3 );
 
-                    //สร้างหน้า (stage) ใหม่ โดยห่างจากหน้าแรก (+100,+50) ตาม x,y
+        
+        /**
+         * ตั้งขนาดหน้าจอและ Show VBox
+         */
         Stage secondStage = new Stage();
         Scene scene = new Scene(root, 400, 600);
         secondStage.setTitle("UI บวก CSS");
