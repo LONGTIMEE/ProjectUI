@@ -11,24 +11,14 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
+
 public class LoginUI {
-
-
-/**
- * loginLabel เป็นการเเสดงข้อความเขียนว่า  กรุณาล็อคอิน
- * nameLabel เป็นการเเสดงข้อความเขียนว่า UserName
- * usernameField เป็นการใส่ข้อความที่ต้องการสร้าง UserName
- * passwordLabel เป็นการเเสดงข้อความเขียนว่า PassWord
- * passwordField เป็นการใส่ข้อความที่ต้องการสร้าง PassWord
- * loginButton เป็นปุ่มสำหรับใช้งาน ในการล็อคอิน
- * creatAccountsButton เป็นปุ่มสำหรับใช้งาน ในการสร้างรหัส
- * 
- */
-
-
-
-
+    private Stage primaryStage;
+    
     public LoginUI(Stage primaryStage){
+        this.primaryStage = primaryStage;
+
+
         // สร้าง Container ไว้ใส่ UI 
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20;");
@@ -47,39 +37,36 @@ public class LoginUI {
         Button creatAccountsButton = new Button("ปุ่ม (Button): สร้างรหัส");
 
 
-    
-        /**
-         * เป็นปุ่ม เพื่อไปยังหน้าสร้างรหัส
-         */
+        usernameField.setId("usernameField");
+        passwordField.setId("passwordField");
+        loginButton.setId("loginButton");
+        messageLabel.setId("messageLabel");
+        creatAccountsButton.setId("creatAccountsButton");
+
+
+        // ตั้ง Action เมื่อผู้ใช้ทำ...กับ UI เช่นคลิกปุ่ม
+      // loginButton.setOnAction(e -> new BookingUI(primaryStage));
        creatAccountsButton.setOnAction(e -> new CreatAcountsUI(primaryStage));
-
-
-        /**
-         * เป็นปุ่มเเละมีเมธอด เพื่อตรวจสอบว่ามี User ตรงกับข้อมูลที่กรอกไหม
-         */
-        loginButton.setOnAction(e -> {
-        User user = Database.authenticate(usernameField.getText(), passwordField.getText());
-        if (user != null) new BookingUI(primaryStage);
-        else messageLabel.setText("Invalid credentials.");
-    });
-   
-        
-
        
 
-        /**
-         * เพิ่มทุกอยุ่างลง VBox Container เพื่อจัดวางลง
-         */
-        root.getChildren().addAll(loginLabel,nameLabel,usernameField,passwordLabel,passwordField,loginButton,creatAccountsButton,  messageLabel);
-        
+       
+       loginButton.setOnAction(e -> {
+        User user = Database.authenticate(usernameField.getText(), passwordField.getText());
+        if (user != null) new TypeofCar(primaryStage);
+        else messageLabel.setText("Invalid credentials.");
+    });
 
-        /**
-         * ตั้งขนาดหน้าจอและ Show VBox
-         */
+
+
+        //เพิ่มทุกอยุ่างลง VBox Container
+        root.getChildren().addAll(loginLabel,nameLabel,usernameField,passwordLabel,passwordField,loginButton,creatAccountsButton,  messageLabel);
+        //ตั้งขนาดหน้าจอและ Show VBox
         Scene scene = new Scene(root, 400, 600);
         primaryStage.setTitle("JavaFX UI Components");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
+    
 }
+
