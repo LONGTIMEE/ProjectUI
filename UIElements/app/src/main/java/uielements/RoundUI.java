@@ -11,21 +11,42 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class RoundUI{
-    //private BookingData bookingData;
+   
 
     public RoundUI(Stage primaryStage, BookingData bookingData){
-        //this.bookingData = bookingData;
+        
         
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20; -fx-background-color:rgb(216, 135, 135);");
 
         ComboBox<String> comboBox = new ComboBox<>();
         comboBox.getItems().addAll("สนามบินสุวรรณภูมิ", "สนามบินดอนเมือง", "เซ็นทรัล พระราม 3");
-        Label nameLabel = new Label("วัน-เวลารับรถ");
-        TextField takecarField = new TextField("19/02/2025 10:00น");
-        Label password = new Label("วัน-เวลาคืนรถ");
-        TextField sentcarField = new TextField("20/02/2025 10:00น");
-        Button button = new Button("เช่า");
+        
+        Label takecarLabel = new Label("วันรับรถ");
+        TextField takecarDateField = new DatePicker();
+        takecarDateField.setPromptText("กรอกวันคืนรถ เช่น 20/02/2025");
+
+        // เวลารับรถ (TextField)
+        Label takecarTimeLabel = new Label("เวลารับรถ");
+        ComboBox<String> takecarTimeBox = new ComboBox<>();
+        takecarTimeBox.getItems().addAll("08:00", "10:00", "12:00", "14:00", "16:00", "18:00");
+
+        // วันคืนรถ (TextField)
+        Label sentcarLabel = new Label("วันคืนรถ");
+        TextField sentcarDateField = new TextField();
+        sentcarDateField.setPromptText("กรอกวันคืนรถ เช่น 20/02/2025");
+
+        // เวลาคืนรถ (ComboBox)
+        Label sentcarTimeLabel = new Label("เวลาคืนรถ");
+        ComboBox<String> sentcarTimeBox = new ComboBox<>();
+        sentcarTimeBox.getItems().addAll("08:00", "10:00", "12:00", "14:00", "16:00", "18:00");
+
+
+
+
+
+
+
 
         takecarField.setId("takecarField");
         sentcarField.setId("sentcarField");
@@ -33,14 +54,34 @@ public class RoundUI{
         button.setId("button");
 
     
-        button.setOnAction(e -> {
-            bookingData.setPickupLocation(comboBox.getValue());
-            bookingData.setPickupDate(takecarField.getText());
-            bookingData.setReturnDate(sentcarField.getText());
-            new PaymentUI(primaryStage, bookingData);
+        rentButton.setOnAction(e -> {
+            String pickupLocation = comboBox.getValue();
+            String pickupDate = takecarDateField.getText();
+            String pickupTime = takecarTimeBox.getValue();
+            String returnDate = sentcarDateField.getText();
+            String returnTime = sentcarTimeBox.getValue();
+
+            // ตรวจสอบว่ากรอกข้อมูลครบ
+            if (pickupLocation == null || pickupDate.isEmpty() || pickupTime == null || returnDate.isEmpty() || returnTime == null) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("ข้อมูลไม่ครบถ้วน");
+                alert.setHeaderText(null);
+                alert.setContentText("กรุณากรอกข้อมูลให้ครบทุกช่องก่อนทำการเช่ารถ");
+                alert.showAndWait();
+            } else {
+                // บันทึกข้อมูลลง BookingData
+                bookingData.setPickupLocation(pickupLocation);
+                bookingData.setPickupDate(pickupDate); // เก็บเป็น String
+                bookingData.setPickupTime(pickupTime);
+                bookingData.setReturnDate(returnDate);
+                bookingData.setReturnTime(returnTime);
+
+                // ไปยังหน้าชำระเงิน
+                new PaymentUI(primaryStage, bookingData);
+            }
         });
-       
-        root.getChildren().addAll(comboBox ,nameLabel, takecarField, password, sentcarField, button);
+
+        root.getChildren().addAll(comboBox ,takecarLabel, takecarDateField, takecarTimeLabel, takecarTimeBox, sentcarLabel, sentcarDateField, sentcarTimeLabel, sentcarTimeBox);
 
         //สร้างหน้า (stage) ใหม่ โดยห่างจากหน้าแรก (+100,+50) ตาม x,y
         

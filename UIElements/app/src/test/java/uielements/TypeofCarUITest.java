@@ -36,7 +36,6 @@ public class TypeofCarUITest extends ApplicationTest {
         clickOn("#passwordField").write("2");
         clickOn("#loginButton");
 
-        clickOn("#fourTirebutton");
 
         clickOn("Nissan Note 2018");
 
