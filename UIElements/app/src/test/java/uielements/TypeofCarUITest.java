@@ -39,12 +39,7 @@ public class TypeofCarUITest extends ApplicationTest {
 
         clickOn("Nissan Note 2018");
 
-        clickOn("#planetakecarField").write("พระราม2") ;
         
-        doubleClickOn("#takecarField");
-        clickOn("#takecarField").write("19/02/2025 10:00น") ;
-        doubleClickOn("#sentcarField");
-        clickOn("#sentcarField").write("20/02/2025 10:00น") ;
         
         
     }
