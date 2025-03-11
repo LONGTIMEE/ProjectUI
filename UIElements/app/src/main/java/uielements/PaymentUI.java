@@ -44,9 +44,12 @@ public class PaymentUI{
             new SummaryUI(primaryStage, bookingData);
         });
         
+
+        Button backButton = new Button("ย้อนกลับ");
+        backButton.setOnAction(e -> primaryStage.setScene(previousScene));
         
 
-        root.getChildren().addAll(label, label1, priceField, paybutton);
+        root.getChildren().addAll(label, label1, priceField, paybutton, backButton);
 
         
         

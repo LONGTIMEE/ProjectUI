@@ -52,7 +52,9 @@ public class RoundUI{
         sentcarTimeBox.setId("returnTimeBox");
         rentButton.setId("button");
 
-    
+
+        
+
         rentButton.setOnAction(e -> {
             String pickupLocation = comboBox.getValue();
             String pickupDate = takecarDateField.getText();
@@ -79,8 +81,14 @@ public class RoundUI{
                 new PaymentUI(primaryStage, bookingData);
             }
         });
+            
+            Button backButton = new Button("ย้อนกลับ");
+        backButton.setOnAction(e -> primaryStage.setScene(previousScene));
 
-        root.getChildren().addAll(comboBox ,takecarLabel, takecarDateField, takecarTimeLabel, takecarTimeBox, sentcarLabel, sentcarDateField, sentcarTimeLabel, sentcarTimeBox, rentButton);
+
+
+
+        root.getChildren().addAll(comboBox ,takecarLabel, takecarDateField, takecarTimeLabel, takecarTimeBox, sentcarLabel, sentcarDateField, sentcarTimeLabel, sentcarTimeBox, rentButton, backButton);
 
         //สร้างหน้า (stage) ใหม่ โดยห่างจากหน้าแรก (+100,+50) ตาม x,y
         

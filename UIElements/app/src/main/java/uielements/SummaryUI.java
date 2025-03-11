@@ -17,7 +17,11 @@ public class SummaryUI {
         Label returnLabel = new Label("วันคืนรถ: " + bookingData.getReturnDate());
         Label paymentLabel = new Label("จำนวนเงินที่ต้องชำระ: " + bookingData.getPaymentAmount() + " บาท");
 
-        root.getChildren().addAll(label, carLabel, locationLabel, pickupLabel, returnLabel, paymentLabel);
+
+        Button backButton = new Button("ย้อนกลับ");
+        backButton.setOnAction(e -> primaryStage.setScene(previousScene));
+
+        root.getChildren().addAll(label, carLabel, locationLabel, pickupLabel, returnLabel, paymentLabel, backButton);
         Scene scene = new Scene(root, 400, 600);
         primaryStage.setTitle("สรุปรายการ");
         primaryStage.setScene(scene);
