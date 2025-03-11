@@ -21,18 +21,5 @@ public class User {
 
     
 
-    // public void deposit(double amount) {
-    //     balance += amount;
-      
-    // }
     
-    // public boolean withdraw(double amount) {
-    //     if (amount > balance)
-    //         return false;
-    //     balance -= amount;
-        
-    //     return true;
-        
-    // }
-
 }

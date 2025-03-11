@@ -36,21 +36,19 @@ public class roundUITest extends ApplicationTest {
         clickOn("#passwordField").write("2");
         clickOn("#loginButton");
 
-        clickOn("#fourTirebutton");
+        
 
         clickOn("Nissan Note 2018");
 
-        clickOn("#planetakecarField").write("พระราม2") ;
-        
-        doubleClickOn("#takecarField");
-        clickOn("#takecarField").write("19/02/2025 10:00น") ;
-        doubleClickOn("#sentcarField");
-        clickOn("#sentcarField").write("20/02/2025 10:00น") ;
+        clickOn("#pickupLocationBox").write("สนามบินดอนเมือง");
+        clickOn("#pickupDateField").write("19/02/2025");
+        clickOn("#pickupTimeBox").clickOn("10:00");
+        clickOn("#returnDateField").write("20/02/2025");
+        clickOn("#returnTimeBox").clickOn("12:00");
+        clickOn("#rentButton");
 
-        clickOn("#rentbutton");
-       
     
-        
-        
-    }
+        verifyThat("#pickupDateField", (TextField t) -> t.getText().equals("19/02/2025"));
+        verifyThat("#returnDateField", (TextField t) -> t.getText().equals("20/02/2025"));
+    } 
 }

@@ -42,16 +42,15 @@ public class RoundUI{
         sentcarTimeBox.getItems().addAll("08:00", "10:00", "12:00", "14:00", "16:00", "18:00");
 
 
+        Button rentButton = new Button("เช่า");
 
 
-
-
-
-
-        takecarField.setId("takecarField");
-        sentcarField.setId("sentcarField");
-        
-        button.setId("button");
+        comboBox.setId("pickupLocationBox");
+        takecarDateField.setId("pickupDateField");
+        takecarTimeBox.setId("pickupTimeBox");
+        sentcarDateField.setId("returnDateField");
+        sentcarTimeBox.setId("returnTimeBox");
+        rentButton.setId("button");
 
     
         rentButton.setOnAction(e -> {
@@ -81,7 +80,7 @@ public class RoundUI{
             }
         });
 
-        root.getChildren().addAll(comboBox ,takecarLabel, takecarDateField, takecarTimeLabel, takecarTimeBox, sentcarLabel, sentcarDateField, sentcarTimeLabel, sentcarTimeBox);
+        root.getChildren().addAll(comboBox ,takecarLabel, takecarDateField, takecarTimeLabel, takecarTimeBox, sentcarLabel, sentcarDateField, sentcarTimeLabel, sentcarTimeBox, rentButton);
 
         //สร้างหน้า (stage) ใหม่ โดยห่างจากหน้าแรก (+100,+50) ตาม x,y
         
