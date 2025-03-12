@@ -14,7 +14,7 @@ public class TypeofCar {
 
 
     
-    public  TypeofCar(Stage primaryStage){
+    public  TypeofCar(Stage primaryStage , Scene previousScene){
         BookingData bookingData = new BookingData();
 
         VBox root = new VBox(10);
@@ -32,6 +32,9 @@ public class TypeofCar {
         car1.setId("Nissan Note 2018");
         car2.setId("Toyota Yaris ATIV 2023");
         car3.setId("Nissan Almera 2022");
+
+        Button backButton = new Button("ย้อนกลับ");
+        backButton.setOnAction(e -> primaryStage.setScene(previousScene)); // กลับไปหน้าก่อนหน้า
 
         car1.setOnAction(e -> {
             bookingData.setSelectedCar("Nissan Note 2018");

@@ -13,7 +13,7 @@ import javafx.util.Duration;
 public class RoundUI{
    
 
-    public RoundUI(Stage primaryStage, BookingData bookingData){
+    public RoundUI(Stage primaryStage,  Scene previousScene,BookingData bookingData){
         
         
         VBox root = new VBox(10);

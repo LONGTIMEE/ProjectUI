@@ -51,10 +51,14 @@ public class LoginUI {
 
        
        loginButton.setOnAction(e -> {
-        User user = Database.authenticate(usernameField.getText(), passwordField.getText());
-        if (user != null) new TypeofCar(primaryStage);
-        else messageLabel.setText("Invalid credentials.");
-    });
+    User user = Database.authenticate(usernameField.getText(), passwordField.getText());
+    if (user != null) {
+        Scene currentScene = primaryStage.getScene(); // เก็บหน้าปัจจุบันก่อนเปลี่ยน
+        new TypeofCar(primaryStage, currentScene); // ส่งหน้าปัจจุบันไปให้ TypeofCar
+    } else {
+        messageLabel.setText("Invalid credentials.");
+    }
+});
 
 
 

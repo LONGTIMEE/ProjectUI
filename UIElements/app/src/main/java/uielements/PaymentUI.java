@@ -14,10 +14,10 @@ import javafx.scene.layout.VBox;
 
 
 public class PaymentUI{
-    private BookingData bookingData;
+    
 
-    public PaymentUI(Stage primaryStage, BookingData bookingData){
-        this.bookingData = bookingData;
+    public PaymentUI(Stage primaryStage, Scene previousScene, BookingData bookingData){
+        
 
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20; -fx-background-color:rgb(216, 135, 135);");
