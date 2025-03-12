@@ -12,28 +12,52 @@ import javafx.util.Duration;
 import javafx.scene.layout.VBox;
 
 
-
+/**
+ * 
+ * คลาส PaymentUI เเสดงการชำระเงิน
+ * 
+ */
 public class PaymentUI{
     
-
+/**
+ * 
+ */
     public PaymentUI(Stage primaryStage, Scene previousScene, BookingData bookingData){
         
 
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20; -fx-background-color:rgb(216, 135, 135);");
 
+
+        /**
+         * ข้อความ กรุณาชำระเงิน
+         */
         Label label = new Label("กรุณาชำระเงิน");
         label.setStyle("-fx-font-size: 30px; -fx-text-fill: #333;");
+
+        /**
+         * ข้อความ จำนวนเงินที่ต้องชำระ
+         */
         Label label1 = new Label("จำนวนเงินที่ต้องชำระ");
         label.setStyle("-fx-font-size: 25px; -fx-text-fill: #333;");
+
+        /**
+         * ช่องใส่ข้อความ ถูกตั้งไว้ที่ 1600 เเก้ไขไม่ได้
+         */
         TextField priceField = new TextField("1600");
         priceField.setEditable(false);
-
         priceField.setStyle("-fx-border-color: #ccc; -fx-padding: 5px;");
+
+
+        /**
+         * ปุ่ม ชำระเงิน
+         */
         Button paybutton = new Button("ชำระเงิน");
         paybutton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
         
-        
+        /**
+         * ตั้งไอดีสำหรับการทดสอบ
+         */
         priceField.setId("priceField");
         paybutton.setId("paybutton");
 
