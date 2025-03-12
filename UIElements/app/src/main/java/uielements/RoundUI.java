@@ -12,39 +12,74 @@ import javafx.util.Duration;
 
 public class RoundUI{
    
-
+    /**
+     * @param primaryStage   หน้าหลักแอป
+     * @param previousScene  หน้าก่อนเข้ามา
+     * @param bookingData    อ็อบเจ็กต์ที่เก็บข้อมูลการจอง
+     */
     public RoundUI(Stage primaryStage,  Scene previousScene,BookingData bookingData){
         
         
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20; -fx-background-color:rgb(216, 135, 135);");
 
+        /**
+         * ComboBox สถานที่รับรถ
+         */
         ComboBox<String> comboBox = new ComboBox<>();
         comboBox.getItems().addAll("สนามบินสุวรรณภูมิ", "สนามบินดอนเมือง", "เซ็นทรัล พระราม 3");
         
+        /**
+         * ข้อความ วันรับรถ
+         */
         Label takecarLabel = new Label("วันรับรถ");
-        TextField takecarDateField = new DatePicker();
-        takecarDateField.setPromptText("กรอกวันคืนรถ เช่น 20/02/2025");
+        /**
+         * ช่องใส่ข้อความ วันรับรถ
+         */
+        TextField takecarDateField = new TextField();
+        takecarDateField.setPromptText("กรอกวันรับรถ เช่น 20/02/2025");
 
-        // เวลารับรถ (TextField)
+        /**
+         * ข้อความ เวลารับรถ
+         */
         Label takecarTimeLabel = new Label("เวลารับรถ");
+        /**
+         * ตัวเลือก เวลารับรถ
+         */
         ComboBox<String> takecarTimeBox = new ComboBox<>();
         takecarTimeBox.getItems().addAll("08:00", "10:00", "12:00", "14:00", "16:00", "18:00");
 
-        // วันคืนรถ (TextField)
+        /**
+         * ข้อความ วันคืนรถ
+         */
         Label sentcarLabel = new Label("วันคืนรถ");
+
+        /**
+         * ช่องใส่ข้อความ วันคืนรถ
+         */
         TextField sentcarDateField = new TextField();
         sentcarDateField.setPromptText("กรอกวันคืนรถ เช่น 20/02/2025");
 
-        // เวลาคืนรถ (ComboBox)
+        /**
+         * ข้อความ เวลาคืนรถ
+         */
         Label sentcarTimeLabel = new Label("เวลาคืนรถ");
+
+        /**
+         * ตัวเลือก เวลาคืนรถ
+         */
         ComboBox<String> sentcarTimeBox = new ComboBox<>();
         sentcarTimeBox.getItems().addAll("08:00", "10:00", "12:00", "14:00", "16:00", "18:00");
 
-
+        /**
+         * ปุ่มเช่ารถ
+         */
         Button rentButton = new Button("เช่า");
 
 
+        /**
+         * ตั้ง ID ที่มี Action ต่อผู้ใช้
+         */
         comboBox.setId("pickupLocationBox");
         takecarDateField.setId("pickupDateField");
         takecarTimeBox.setId("pickupTimeBox");
@@ -54,7 +89,9 @@ public class RoundUI{
 
 
         
-
+        /**
+         * 
+         */
         rentButton.setOnAction(e -> {
             String pickupLocation = comboBox.getValue();
             String pickupDate = takecarDateField.getText();
@@ -62,7 +99,9 @@ public class RoundUI{
             String returnDate = sentcarDateField.getText();
             String returnTime = sentcarTimeBox.getValue();
 
-            // ตรวจสอบว่ากรอกข้อมูลครบ
+            /**
+             * ตรวจสอบข้อมูลครบถ้วนหรือไม่ ถ้าไม่ ส่งคำเตือน
+             */
             if (pickupLocation == null || pickupDate.isEmpty() || pickupTime == null || returnDate.isEmpty() || returnTime == null) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("ข้อมูลไม่ครบถ้วน");
@@ -70,18 +109,23 @@ public class RoundUI{
                 alert.setContentText("กรุณากรอกข้อมูลให้ครบทุกช่องก่อนทำการเช่ารถ");
                 alert.showAndWait();
             } else {
-                // บันทึกข้อมูลลง BookingData
+                
                 bookingData.setPickupLocation(pickupLocation);
-                bookingData.setPickupDate(pickupDate); // เก็บเป็น String
+                bookingData.setPickupDate(pickupDate); 
                 bookingData.setPickupTime(pickupTime);
                 bookingData.setReturnDate(returnDate);
                 bookingData.setReturnTime(returnTime);
 
-                // ไปยังหน้าชำระเงิน
+                /**
+                 * ไปหน้าชำระเงิน
+                 */
                 new PaymentUI(primaryStage, bookingData);
             }
         });
             
+            /**
+             * ปุ่มย้อนกลับ
+             */
             Button backButton = new Button("ย้อนกลับ");
         backButton.setOnAction(e -> primaryStage.setScene(previousScene));
 
@@ -94,8 +138,6 @@ public class RoundUI{
         
         Scene scene = new Scene(root, 400, 600);
         primaryStage.setTitle("UI บวก CSS");
-        primaryStage.setX(primaryStage.getX() + 100);
-        primaryStage.setY(primaryStage.getY() + 50);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
