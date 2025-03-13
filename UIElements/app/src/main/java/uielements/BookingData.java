@@ -26,40 +26,114 @@ import java.time.LocalDate;
 //     public void setPaymentAmount(String paymentAmount) { this.paymentAmount = paymentAmount; }
 // }
 
+
+/**
+ * คลาส BookingData ใช้สำหรับจัดเก็บข้อมูลการจองรถเช่า
+ * รถที่เลือก
+ * สถานที่รับรถ
+ * วันที่รับรถ
+ * เวลารับรถ
+ * วันที่คืนรถ
+ * เวลาคืนรถ
+ * จำนวนเงินที่ต้องชำระ
+ */
 public class BookingData {
     private String selectedCar;
     private String pickupLocation;
-    private LocalDate pickupDate; // ใช้ LocalDate แทน String
-    private String pickupTime; // เพิ่มฟิลด์นี้
-    private LocalDate returnDate; // ใช้ LocalDate แทน String
-    private String returnTime; // เพิ่มฟิลด์นี้
+    private LocalDate pickupDate; 
+    private String pickupTime; 
+    private LocalDate returnDate; 
+    private String returnTime; 
     private String paymentAmount;
 
-    // Getter และ Setter สำหรับ selectedCar
-    public String getSelectedCar() { return selectedCar; }
-    public void setSelectedCar(String selectedCar) { this.selectedCar = selectedCar; }
+    /**
+     * @return รถที่เลือก
+     */
+    public String getSelectedCar() { 
+        return selectedCar; }
 
-    // Getter และ Setter สำหรับ pickupLocation
-    public String getPickupLocation() { return pickupLocation; }
-    public void setPickupLocation(String pickupLocation) { this.pickupLocation = pickupLocation; }
+    /**
+     * กำหนดรถที่เลือก
+     * @param selectedCar รถที่ผู้ใช้เลือก
+     */
+    public void setSelectedCar(String selectedCar) { 
+        this.selectedCar = selectedCar; }
 
-    // Getter และ Setter สำหรับ pickupDate
-    public LocalDate getPickupDate() { return pickupDate; }
-    public void setPickupDate(LocalDate pickupDate) { this.pickupDate = pickupDate; }
+    /**
+     * @return สถานที่รับรถ
+     */
+    public String getPickupLocation() { 
+        return pickupLocation; }
 
-    // Getter และ Setter สำหรับ pickupTime
-    public String getPickupTime() { return pickupTime; }
-    public void setPickupTime(String pickupTime) { this.pickupTime = pickupTime; }
+    /**
+     * กำหนดสถานที่รับรถ
+     * @param pickupLocation สถานที่รับรถที่ผู้ใช้เลือก
+     */
+    public void setPickupLocation(String pickupLocation) { 
+        this.pickupLocation = pickupLocation; }
 
-    // Getter และ Setter สำหรับ returnDate
-    public LocalDate getReturnDate() { return returnDate; }
-    public void setReturnDate(LocalDate returnDate) { this.returnDate = returnDate; }
+    /**
+     * @return วันที่รับรถ
+     */
+    public LocalDate getPickupDate() { 
+        return pickupDate; }
 
-    // Getter และ Setter สำหรับ returnTime
-    public String getReturnTime() { return returnTime; }
-    public void setReturnTime(String returnTime) { this.returnTime = returnTime; }
+    /**
+     * กำหนดวันที่รับรถ
+     * @param pickupDate วันที่ที่ผู้ใช้ต้องการรับรถ
+     */
+    public void setPickupDate(LocalDate pickupDate) { 
+        this.pickupDate = pickupDate; }
 
-    // Getter และ Setter สำหรับ paymentAmount
-    public String getPaymentAmount() { return paymentAmount; }
-    public void setPaymentAmount(String paymentAmount) { this.paymentAmount = paymentAmount; }
+    /**
+     * @return เวลารับรถ
+     */
+    public String getPickupTime() { 
+        return pickupTime; }
+
+    /**
+     * กำหนดเวลารับรถ
+     * @param pickupTime เวลาที่ผู้ใช้ต้องการรับรถ
+     */
+    public void setPickupTime(String pickupTime) { 
+        this.pickupTime = pickupTime; }
+
+    /**
+     * @return วันที่คืนรถ
+     */
+    public LocalDate getReturnDate() { 
+        return returnDate; }
+
+    /**
+     * กำหนดวันที่คืนรถ
+     * @param returnDate วันที่ที่ผู้ใช้ต้องการคืนรถ
+     */
+    public void setReturnDate(LocalDate returnDate) { 
+        this.returnDate = returnDate; }
+
+    /**
+     * @return เวลาคืนรถ
+     */
+    public String getReturnTime() { 
+        return returnTime; }
+
+    /**
+     * กำหนดเวลาคืนรถ
+     * @param returnTime เวลาที่ผู้ใช้ต้องการคืนรถ
+     */
+    public void setReturnTime(String returnTime) { 
+        this.returnTime = returnTime; }
+
+    /**
+     * @return จำนวนเงินที่ต้องชำระ
+     */
+    public String getPaymentAmount() { 
+        return paymentAmount; }
+
+    /**
+     * กำหนดจำนวนเงินที่ต้องชำระ
+     * @param paymentAmount จำนวนเงินที่ต้องชำระ
+     */
+    public void setPaymentAmount(String paymentAmount) { 
+        this.paymentAmount = paymentAmount; }
 }
