@@ -11,7 +11,9 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
-
+/**
+ * คลาส LoginUI ใช้สำหรับสร้างหน้าจอล็อกอินของระบบ
+ */
 public class LoginUI {
     private Stage primaryStage;
     
@@ -23,20 +25,50 @@ public class LoginUI {
         VBox root = new VBox(10);
         root.setStyle("-fx-padding: 20;");
 
-        // สร้าง องค์ประกอบใน UI
-        // ถ้าสำคัญให้ .setid("ตั้งชื่อ") เพื่อไว้ทำ Testcase ด้วย 
+        /**
+         * ข้อความ กรุณาล็อคอิน
+         */
         Label loginLabel = new Label("กรุณาล็อคอิน");
+
+        /**
+         * ข้อความ UserName
+         */
         Label nameLabel = new Label("UserName");
+
+        /**
+         * ใส่ข้อความ ชื่อบัญชีที่ลงทะเทียนไว้
+         */
         TextField usernameField = new TextField("");
+
+        /**
+         * ข้อความ PassWord
+         */
         Label passwordLabel = new Label("PassWord");
+
+        /**
+         * ใส่ข้อความ รหัสที่ลงทะเบียนไว้
+         */
         TextField passwordField = new TextField("");
-        Label messageLabel = new Label();
-       
+        
+        /**
+         * ปุ่ม ล็อคอิน
+         */
         Button loginButton = new Button("ปุ่ม (Button): ล็อคอิน");
         
+
+        /**
+         * ปุ่ม สร้างรหัส
+         */
         Button creatAccountsButton = new Button("ปุ่ม (Button): สร้างรหัส");
 
+        /**
+         * ข้อความ ใช้เเสดงการเตือน
+         */
+        Label messageLabel = new Label();
 
+        /**
+         * สร้างไอดีไว้ สำหรับทำการทดสอบ
+         */
         usernameField.setId("usernameField");
         passwordField.setId("passwordField");
         loginButton.setId("loginButton");
@@ -44,12 +76,21 @@ public class LoginUI {
         creatAccountsButton.setId("creatAccountsButton");
 
 
-        // ตั้ง Action เมื่อผู้ใช้ทำ...กับ UI เช่นคลิกปุ่ม
-      // loginButton.setOnAction(e -> new BookingUI(primaryStage));
+       /**
+        * ปุ่มสร้างรหัส การทำงาน เปิดไปหน้าสร้างบัญชี
+        */
        creatAccountsButton.setOnAction(e -> new CreatAcountsUI(primaryStage));
        
 
-       
+       /**
+        * ปุ่มล็อคอิน กรอกข้อมูลเข้ามาถ้าตรงกับ ใน Database คืนUser
+        * เเละตรวจสอบผ่าน authenticate user != null ล็อคอินสำเร็จ
+        * 
+        * เก็บหน้าปัจจุบันก่อนเปลี่ยน
+        * ส่งหน้าปัจจุบันไป TypeofCar
+        * 
+        * ส่งคำเตือนเมื่อไม่มีข้อมูลในระบบ
+        */
        loginButton.setOnAction(e -> {
     User user = Database.authenticate(usernameField.getText(), passwordField.getText());
     if (user != null) {
@@ -62,11 +103,16 @@ public class LoginUI {
 
 
 
-        //เพิ่มทุกอยุ่างลง VBox Container
+        /**
+         * เพิ่มองค์ประกอบลงใน vbox
+         */
         root.getChildren().addAll(loginLabel,nameLabel,usernameField,passwordLabel,passwordField,loginButton,creatAccountsButton,  messageLabel);
-        //ตั้งขนาดหน้าจอและ Show VBox
+        
+        /**
+         * ตั้งค่าขนาดของฉาก 
+         */
         Scene scene = new Scene(root, 400, 600);
-        primaryStage.setTitle("JavaFX UI Components");
+        primaryStage.setTitle("ล็อคอิน");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

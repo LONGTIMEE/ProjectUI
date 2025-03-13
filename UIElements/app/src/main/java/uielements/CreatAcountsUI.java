@@ -56,6 +56,11 @@ public class CreatAcountsUI {
                  * ปุ่ม สร้างรหัส
                  */
                 Button creatAccountsButton = new Button("ปุ่ม (Button): สร้างรหัส");
+
+                /**
+                 * ข้อความ สำหรับการเตือน
+                 */
+                Label messagecreatLabel = new Label();
                 
                 /**
                  * ตั้งไอดีเอาไว้ทดสอบ
