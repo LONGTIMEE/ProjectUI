@@ -140,7 +140,7 @@ public class RoundUI{
         //สร้างหน้า (stage) ใหม่ โดยห่างจากหน้าแรก (+100,+50) ตาม x,y
         
         Scene scene = new Scene(root, 400, 600);
-        primaryStage.setTitle("UI บวก CSS");
+        primaryStage.setTitle("สถานที่-วันที่-เวลา");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
