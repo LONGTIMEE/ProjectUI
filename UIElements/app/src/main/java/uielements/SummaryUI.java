@@ -57,9 +57,13 @@ public class SummaryUI {
         backButton.setOnAction(e -> primaryStage.setScene(previousScene));
 
         /**
-         * สร้างฉาก
+         * เพิ่มองค์ประกอบลงใน vbox
          */
         root.getChildren().addAll(label, carLabel, locationLabel, pickupLabel, returnLabel, paymentLabel, backButton);
+
+        /**
+         * กำหนดขนาดฉาก
+         */
         Scene scene = new Scene(root, 400, 600);
         primaryStage.setTitle("สรุปรายการ");
         primaryStage.setScene(scene);
