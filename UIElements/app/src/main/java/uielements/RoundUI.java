@@ -90,13 +90,13 @@ public class RoundUI{
 
         
         /**
-         * 
+         * ดึงค่าจากสิ่งที่เลือกหรือพิมพ์ ถ้ายังไม่ได้เลือกจะเป็น null
          */
         rentButton.setOnAction(e -> {
             String pickupLocation = comboBox.getValue();
-            String pickupDate = takecarDateField.getText();
+            String pickupDate = takecarDateField.getValue() != null ? takecarDateField.getValue().toString() : "";
             String pickupTime = takecarTimeBox.getValue();
-            String returnDate = sentcarDateField.getText();
+            String returnDate = sentcarDateField.getValue() != null ? sentcarDateField.getValue().toString() : "";
             String returnTime = sentcarTimeBox.getValue();
 
             /**
@@ -109,7 +109,10 @@ public class RoundUI{
                 alert.setContentText("กรุณากรอกข้อมูลให้ครบทุกช่องก่อนทำการเช่ารถ");
                 alert.showAndWait();
             } else {
-                
+
+                /**
+                 * บันทึกข้อมูล ลงbookingData
+                 */
                 bookingData.setPickupLocation(pickupLocation);
                 bookingData.setPickupDate(pickupDate); 
                 bookingData.setPickupTime(pickupTime);
