@@ -11,13 +11,12 @@ import javafx.stage.Stage;
  */
 public class SummaryUI {
     /**
-     * สร้าง UI สำหรับแสดงสรุปรายการจอง
+     * คอนสตรักเตอร์สำหรับสร้างหน้า สรุปรายการจอง
      * 
      * @param primaryStage  หน้าหลัก
-     * @param previousScene  หน้าก่อนเข้ามา
      * @param bookingData   ออบเจ็กต์ที่เก็บข้อมูลการจองรถ
      */
-    public SummaryUI(Stage primaryStage, Scene previousScene, BookingData bookingData) {
+    public SummaryUI(Stage primaryStage, BookingData bookingData) {
         VBox root = new VBox(10);
 
         /**
@@ -50,16 +49,12 @@ public class SummaryUI {
          */
         Label paymentLabel = new Label("จำนวนเงินที่ต้องชำระ: " + bookingData.getPaymentAmount() + " บาท");
 
-        /**
-         * ปุ่มย้อนกลับ
-         */
-        Button backButton = new Button("ย้อนกลับ");
-        backButton.setOnAction(e -> primaryStage.setScene(previousScene));
+        
 
         /**
          * เพิ่มองค์ประกอบลงใน vbox
          */
-        root.getChildren().addAll(label, carLabel, locationLabel, pickupLabel, returnLabel, paymentLabel, backButton);
+        root.getChildren().addAll(label, carLabel, locationLabel, pickupLabel, returnLabel, paymentLabel);
 
         /**
          * กำหนดขนาดฉาก

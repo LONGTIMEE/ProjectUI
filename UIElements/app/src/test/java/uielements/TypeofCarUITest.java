@@ -26,7 +26,7 @@ public class TypeofCarUITest extends ApplicationTest {
         loginButton = lookup("#loginButton").query();
     }
     @Test
-    public void testCreartAccount() {
+    public void testTypeofcarUI() {
         clickOn("#creatAccountsButton");
         clickOn("#usernamecreatField").write("2");
         clickOn("#passwordcreatField").write("2");

@@ -15,10 +15,14 @@ import javafx.stage.Stage;
  * คลาส LoginUI ใช้สำหรับสร้างหน้าจอล็อกอินของระบบ
  */
 public class LoginUI {
-    private Stage primaryStage;
-    
+    //private Stage primaryStage;
+    /**
+     * คอนสตรักเตอร์สำหรับสร้างหน้า Login
+     * 
+     * @param primaryStage หน้าหลัก
+     */
     public LoginUI(Stage primaryStage){
-        this.primaryStage = primaryStage;
+       //this.primaryStage = primaryStage;
 
 
         // สร้าง Container ไว้ใส่ UI 
@@ -82,23 +86,19 @@ public class LoginUI {
        creatAccountsButton.setOnAction(e -> new CreatAcountsUI(primaryStage));
        
 
-       /**
-        * ปุ่มล็อคอิน กรอกข้อมูลเข้ามาถ้าตรงกับ ใน Database คืนUser
-        * เเละตรวจสอบผ่าน authenticate user != null ล็อคอินสำเร็จ
-        * 
-        * เก็บหน้าปัจจุบันก่อนเปลี่ยน
-        * ส่งหน้าปัจจุบันไป TypeofCar
-        * 
-        * ส่งคำเตือนเมื่อไม่มีข้อมูลในระบบ
-        */
-       loginButton.setOnAction(e -> {
+    
+
+/**
+ ปุ่มล็อคอิน กรอกข้อมูลเข้ามาถ้าตรงกับ ใน Database คืนUser
+* เเละตรวจสอบผ่าน authenticate user != null ล็อคอินสำเร็จ
+*
+* ส่งคำเตือนเมื่อไม่มีข้อมูลในระบบ
+*/
+
+loginButton.setOnAction(e -> {
     User user = Database.authenticate(usernameField.getText(), passwordField.getText());
-    if (user != null) {
-        Scene currentScene = primaryStage.getScene(); // เก็บหน้าปัจจุบันก่อนเปลี่ยน
-        new TypeofCar(primaryStage, currentScene); // ส่งหน้าปัจจุบันไปให้ TypeofCar
-    } else {
-        messageLabel.setText("Invalid credentials.");
-    }
+    if (user != null) new TypeofCar(primaryStage);
+    else messageLabel.setText("Invalid credentials.");
 });
 
 

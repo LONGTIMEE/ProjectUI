@@ -20,11 +20,12 @@ import javafx.scene.layout.VBox;
 public class PaymentUI{
     
 /**
+ * คอนสตรักเตอร์สำหรับสร้างหน้า จ่ายเงิน
+ * 
  * @param primaryStage  หน้าหลัก เเอป
- * @param previousScene หน้าก่อนเข้ามา
  * @param bookingData   อ็อบเจ็กต์ที่เก็บข้อมูลการจอง
  */
-    public PaymentUI(Stage primaryStage, Scene previousScene, BookingData bookingData){
+    public PaymentUI(Stage primaryStage, BookingData bookingData){
         
         /**
          * สร้าง กล่อง
@@ -74,16 +75,12 @@ public class PaymentUI{
             new SummaryUI(primaryStage, bookingData);
         });
         
-        /**
-         * ปุ่มย้อนกลับ
-         */
-        Button backButton = new Button("ย้อนกลับ");
-        backButton.setOnAction(e -> primaryStage.setScene(previousScene));
+        
         
         /**
          * เพิ่มองค์ประกอบ
          */
-        root.getChildren().addAll(label, label1, priceField, paybutton, backButton);
+        root.getChildren().addAll(label, label1, priceField, paybutton);
 
         
         /**

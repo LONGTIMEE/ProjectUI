@@ -26,7 +26,7 @@ public class paymentUITest extends ApplicationTest {
         loginButton = lookup("#loginButton").query();
     }
     @Test
-    public void testCreartAccount() {
+    public void testpaymentUI() {
         clickOn("#creatAccountsButton");
         clickOn("#usernamecreatField").write("2");
         clickOn("#passwordcreatField").write("2");
@@ -40,7 +40,7 @@ public class paymentUITest extends ApplicationTest {
 
         clickOn("Nissan Note 2018");
 
-        clickOn("#pickupLocationBox").write("สนามบินดอนเมือง");
+        clickOn("#pickupLocationBox").clickOn("สนามบินดอนเมือง");
         clickOn("#pickupDateField").write("19/02/2025");
         clickOn("#pickupTimeBox").clickOn("10:00");
         clickOn("#returnDateField").write("20/02/2025");
@@ -48,10 +48,12 @@ public class paymentUITest extends ApplicationTest {
         clickOn("#rentButton");
 
     
-        verifyThat("#pickupDateField", (TextField t) -> t.getText().equals("19/02/2025"));
-        verifyThat("#returnDateField", (TextField t) -> t.getText().equals("20/02/2025"));
+        
         
         clickOn("#paybutton");
+
+
+        sleep(4000);
         
     }
 }

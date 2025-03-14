@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 
-public class LoginUITest extends ApplicationTest {
+public class LoginandCreatAccountUITest extends ApplicationTest {
 
     private TextField usernameField;
     private TextField passwordField;
@@ -47,7 +47,24 @@ public class LoginUITest extends ApplicationTest {
         clickOn("#passwordcreatField").write("2");
         clickOn("#creatAccountsButton");
 
-        assertThat(lookup("#messagecreatLable").queryLabeled().getText()).isNotEqualTo("Invalid credentials.");
+        assertThat(lookup("#messagecreatLable").queryLabeled().getText()).isNotEqualTo("Username already taken.");
+    }
+    
+    @Test
+    public void testCreartAccountalreadytaken() {
+        
+
+        clickOn("#creatAccountsButton");
+        clickOn("#usernamecreatField").write("1");
+        clickOn("#passwordcreatField").write("1");
+        clickOn("#creatAccountsButton");
+
+        clickOn("#creatAccountsButton");
+        clickOn("#usernamecreatField").write("1");
+        clickOn("#passwordcreatField").write("1");
+        clickOn("#creatAccountsButton");
+
+        assertThat(lookup("#messagecreatLable").queryLabeled().getText()).isNotEqualTo("Username already taken.");
     }
     @Test
     public void testLogin() {
@@ -61,7 +78,5 @@ public class LoginUITest extends ApplicationTest {
         clickOn("#usernameField").write("1");
         clickOn("#passwordField").write("1");
         clickOn("#loginButton");
-
-        
     }
 }

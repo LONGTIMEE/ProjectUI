@@ -16,12 +16,11 @@ public class TypeofCar {
 
 
     /**
-     * คอนสตรักเตอร์ของ TypeofCar 
-     *
-     * @param primaryStage    หน้าหลัก
-     * @param previousScene   Scene ก่อนหน้าที่ใช้สำหรับปุ่มย้อนกลับ
+     * คอนสตรักเตอร์สำหรับสร้างหน้า ประเภทรถ
+     * 
+     * @param primaryStage
      */
-    public  TypeofCar(Stage primaryStage , Scene previousScene){
+    public  TypeofCar(Stage primaryStage){
         BookingData bookingData = new BookingData();
 
         VBox root = new VBox(10);
@@ -54,14 +53,10 @@ public class TypeofCar {
         car2.setId("Toyota Yaris ATIV 2023");
         car3.setId("Nissan Almera 2022");
 
-        /**
-         * ปุ่มย้อนกลับ
-         */
-        Button backButton = new Button("ย้อนกลับ");
-        backButton.setOnAction(e -> primaryStage.setScene(previousScene)); // กลับไปหน้าก่อนหน้า
+        
 
         /**
-         * เมื่อกดปุ่มเลือกรถ จะถูกบันทึกไปที่ bookingData
+         * เมื่อกดปุ่มเลือกรถ จะถูกบันทึกไปที่ bookingData เเละไปยังหน้าเลือกเวลา
          */
         car1.setOnAction(e -> {
             bookingData.setSelectedCar("Nissan Note 2018");
@@ -79,7 +74,7 @@ public class TypeofCar {
         /**
          * เพิ่มองค์ประกอบลงใน vbox 
          */
-        root.getChildren().addAll(label1, car1 , car2, car3 )
+        root.getChildren().addAll(label1, car1 , car2, car3  );
         
         /**
          * สร้างฉาก

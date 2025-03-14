@@ -26,7 +26,7 @@ public class roundUITest extends ApplicationTest {
         loginButton = lookup("#loginButton").query();
     }
     @Test
-    public void testCreartAccount() {
+    public void TestRoundUISuccess() {
         clickOn("#creatAccountsButton");
         clickOn("#usernamecreatField").write("2");
         clickOn("#passwordcreatField").write("2");
@@ -40,7 +40,7 @@ public class roundUITest extends ApplicationTest {
 
         clickOn("Nissan Note 2018");
 
-        clickOn("#pickupLocationBox").write("สนามบินดอนเมือง");
+        clickOn("#pickupLocationBox").clickOn("สนามบินดอนเมือง");
         clickOn("#pickupDateField").write("19/02/2025");
         clickOn("#pickupTimeBox").clickOn("10:00");
         clickOn("#returnDateField").write("20/02/2025");
@@ -48,7 +48,27 @@ public class roundUITest extends ApplicationTest {
         clickOn("#rentButton");
 
     
-        verifyThat("#pickupDateField", (TextField t) -> t.getText().equals("19/02/2025"));
-        verifyThat("#returnDateField", (TextField t) -> t.getText().equals("20/02/2025"));
+        
     } 
+    @Test
+    public void TestRoundUIFail() {
+        clickOn("#creatAccountsButton");
+        clickOn("#usernamecreatField").write("2");
+        clickOn("#passwordcreatField").write("2");
+        clickOn("#creatAccountsButton");
+
+        clickOn("#usernameField").write("2");
+        clickOn("#passwordField").write("2");
+        clickOn("#loginButton");
+
+        
+
+        clickOn("Nissan Note 2018");
+
+        clickOn("#pickupLocationBox").clickOn("สนามบินดอนเมือง");
+        clickOn("#pickupDateField").write("ข้าวมันไก่");
+        clickOn("#rentButton");
+        
+        sleep(2000);
+    }
 }

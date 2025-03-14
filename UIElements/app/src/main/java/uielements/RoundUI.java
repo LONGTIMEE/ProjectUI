@@ -1,5 +1,8 @@
 package uielements;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -13,11 +16,12 @@ import javafx.util.Duration;
 public class RoundUI{
    
     /**
+     * คอนสตรักเตอร์สำหรับสร้างหน้า รอบเวลา
+     * 
      * @param primaryStage   หน้าหลักแอป
-     * @param previousScene  หน้าก่อนเข้ามา
      * @param bookingData    อ็อบเจ็กต์ที่เก็บข้อมูลการจอง
      */
-    public RoundUI(Stage primaryStage,  Scene previousScene,BookingData bookingData){
+    public RoundUI(Stage primaryStage, BookingData bookingData){
         
         
         VBox root = new VBox(10);
@@ -85,7 +89,7 @@ public class RoundUI{
         takecarTimeBox.setId("pickupTimeBox");
         sentcarDateField.setId("returnDateField");
         sentcarTimeBox.setId("returnTimeBox");
-        rentButton.setId("button");
+        rentButton.setId("rentButton");
 
 
         
@@ -94,9 +98,9 @@ public class RoundUI{
          */
         rentButton.setOnAction(e -> {
             String pickupLocation = comboBox.getValue();
-            String pickupDate = takecarDateField.getValue() != null ? takecarDateField.getValue().toString() : "";
+            String pickupDate = takecarDateField.getText();
             String pickupTime = takecarTimeBox.getValue();
-            String returnDate = sentcarDateField.getValue() != null ? sentcarDateField.getValue().toString() : "";
+            String returnDate = sentcarDateField.getText();
             String returnTime = sentcarTimeBox.getValue();
 
             /**
@@ -109,33 +113,41 @@ public class RoundUI{
                 alert.setContentText("กรุณากรอกข้อมูลให้ครบทุกช่องก่อนทำการเช่ารถ");
                 alert.showAndWait();
             } else {
-
+                try {
+                    
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate pickupDateParsed = LocalDate.parse(pickupDate, formatter);
+                LocalDate returnDateParsed = LocalDate.parse(returnDate, formatter);
                 /**
                  * บันทึกข้อมูล ลงbookingData
                  */
                 bookingData.setPickupLocation(pickupLocation);
-                bookingData.setPickupDate(pickupDate); 
+                bookingData.setPickupDate(pickupDateParsed); 
                 bookingData.setPickupTime(pickupTime);
-                bookingData.setReturnDate(returnDate);
+                bookingData.setReturnDate(returnDateParsed);
                 bookingData.setReturnTime(returnTime);
 
                 /**
                  * ไปหน้าชำระเงิน
                  */
                 new PaymentUI(primaryStage, bookingData);
+            } catch (Exception ex) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("รูปแบบวันที่ไม่ถูกต้อง");
+                alert.setHeaderText(null);
+                alert.setContentText("กรุณากรอกวันที่ให้ถูกต้อง (ตัวอย่าง: 20/02/2025)");
+                alert.showAndWait();
+                }
             }
         });
             
-            /**
-             * ปุ่มย้อนกลับ
-             */
-            Button backButton = new Button("ย้อนกลับ");
-        backButton.setOnAction(e -> primaryStage.setScene(previousScene));
+    
 
 
 
 
-        root.getChildren().addAll(comboBox ,takecarLabel, takecarDateField, takecarTimeLabel, takecarTimeBox, sentcarLabel, sentcarDateField, sentcarTimeLabel, sentcarTimeBox, rentButton, backButton);
+
+        root.getChildren().addAll(comboBox ,takecarLabel, takecarDateField, takecarTimeLabel, takecarTimeBox, sentcarLabel, sentcarDateField, sentcarTimeLabel, sentcarTimeBox, rentButton);
 
         //สร้างหน้า (stage) ใหม่ โดยห่างจากหน้าแรก (+100,+50) ตาม x,y
         
